@@ -79,6 +79,15 @@ bool flatTrimCallback(std_srvs::Empty::Request &request, std_srvs::Empty::Respon
     fprintf(stderr, "\nFlat Trim Set.\n");
 }
 
+bool magCalibCallback(std_srvs::Empty::Request &/*request*/, std_srvs::Empty::Response &/*response*/)
+{
+    vp_os_mutex_lock(&twist_lock);
+    ardrone_at_set_calibration( ARDRONE_CALIBRATION_DEVICE_MAGNETOMETER );
+    vp_os_mutex_unlock(&twist_lock);
+    fprintf(stderr, "\nMagnetometer Calibration started.\n");
+    return true;
+}
+
 void cmdVelCallback(const geometry_msgs::TwistConstPtr &msg)
 {
     vp_os_mutex_lock(&twist_lock);

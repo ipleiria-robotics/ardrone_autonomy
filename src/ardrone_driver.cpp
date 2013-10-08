@@ -27,6 +27,7 @@ ARDroneDriver::ARDroneDriver()
     setCamChannel_service = node_handle.advertiseService("ardrone/setcamchannel",setCamChannelCallback );
     setLedAnimation_service = node_handle.advertiseService("ardrone/setledanimation", setLedAnimationCallback);
     flatTrim_service = node_handle.advertiseService("ardrone/flattrim", flatTrimCallback);
+    magCalib_service = node_handle.advertiseService("ardrone/magcalib", magCalibCallback);
     setFlightAnimation_service = node_handle.advertiseService("ardrone/setflightanimation", setFlightAnimationCallback);
 
     /*
